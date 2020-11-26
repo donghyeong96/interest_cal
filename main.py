@@ -58,9 +58,24 @@ while choice !='3':
                 for i in product:
                     print(product.index(i),'번 - 상품명 : ',(i),', 1년 이자율 : ',interest1y[product.index(i)],', 2년 이자율 : ',interest2y[product.index(i)])
             elif custsel == '2':
-                print('추가필요')
+                cost = float(input("월 납입금을 입력하세요."))
+                cal_pd = input("이자계산을 원하시는 상품명을 입력하세요.")
+                cal_int1 = float(interest1y[product.index(cal_pd)])
+                cal_int2 = float(interest2y[product.index(cal_pd)])
+                print('''1년 예치 기준
+                - 원금합계 : ''',round(cost*12),'''원
+                - 이자금액 : ''',round(cost*(cal_int1*0.01/12)*(12*(12+1)/2)),'''원
+                - 세후 수령액 : ''',round((cost*12)+((cost*(cal_int1*0.01/12)*(12*(12+1)/2))-(cost*(cal_int1*0.01/12)*(12*(12+1)/2))*0.154)),'원'
+                )
+                print('''2년 예치 기준
+                - 원금합계 : ''',round(cost*24),'''원
+                - 이자금액 : ''',round(cost*(cal_int1*0.01/24)*(24*(24+1)/2)),'''원
+                - 세후 수령액 : ''',round((cost*24)+((cost*(cal_int1*0.01/24)*(24*(24+1)/2))-(cost*(cal_int1*0.01/24)*(24*(24+1)/2))*0.154)),'원'
+                )
             elif custsel == '3': break
             else:
                 print ('1, 2번 중 선택해주세요.')
     elif choice=='3' : break
     else: print('1, 2번 중 선택해주세요.')
+
+
